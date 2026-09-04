@@ -1,280 +1,407 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
 <title>Good Morning, Anu 🌷</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Quicksand:wght@400;500;600;700&display=swap');
 
-*{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-}
-
-html{
-  scroll-behavior:smooth;
-}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
 
 body{
-  font-family:'Quicksand',sans-serif;
-  color:#573d4a;
-  background:#ffd9c9;
+  font-family:Quicksand,sans-serif;
+  color:#5b4650;
   overflow-x:hidden;
+  background:#f6c5b8;
 }
 
-/* =========================
-   MAIN BACKGROUND
-========================= */
+/* =====================================================
+   ILLUSTRATED BEACH BACKGROUND
+===================================================== */
 
-.page{
-  position:relative;
-  min-height:100vh;
-  overflow:hidden;
-}
-
-.sky{
+.scene{
   position:fixed;
   inset:0;
-  z-index:-10;
+  overflow:hidden;
+  z-index:-20;
   background:
-    radial-gradient(circle at 72% 24%,rgba(255,247,190,.95) 0 7%,transparent 18%),
     linear-gradient(
       180deg,
-      #f7b5b7 0%,
-      #ffc1b0 22%,
-      #ffd0ad 43%,
-      #f8bcae 57%,
-      #8dcbd0 72%,
-      #6bb5c1 100%
+      #eaaebd 0%,
+      #f5b8ae 20%,
+      #ffc7aa 43%,
+      #f8c7b0 55%,
+      #9bd0d0 70%,
+      #70b7c1 100%
     );
 }
 
-.sun{
-  position:fixed;
-  width:125px;
-  height:125px;
+/* soft paper grain */
+.scene:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  opacity:.14;
+  background-image:
+    radial-gradient(#fff 1px,transparent 1px),
+    radial-gradient(#7e5960 1px,transparent 1px);
+  background-size:25px 25px,31px 31px;
+  background-position:0 0,10px 15px;
+  pointer-events:none;
+}
+
+/* SUN */
+.bigSun{
+  position:absolute;
+  width:155px;
+  height:155px;
   border-radius:50%;
-  right:18%;
-  top:17%;
-  background:#fff4b5;
+  right:17%;
+  top:16%;
+  background:#fff0ad;
   box-shadow:
-    0 0 35px #fff3b0,
-    0 0 80px rgba(255,230,170,.7);
-  z-index:-8;
-  animation:sunPulse 5s ease-in-out infinite;
+    0 0 25px #fff3b9,
+    0 0 80px rgba(255,239,177,.75),
+    0 0 150px rgba(255,222,173,.45);
 }
 
-@keyframes sunPulse{
-  50%{transform:scale(1.04);opacity:.92}
+/* SUN RAYS */
+.rays{
+  position:absolute;
+  width:300px;
+  height:300px;
+  right:11%;
+  top:10%;
+  border-radius:50%;
+  background:
+    repeating-conic-gradient(
+      rgba(255,246,196,.18) 0deg 4deg,
+      transparent 4deg 15deg
+    );
+  mask:radial-gradient(circle,transparent 0 43%,#000 44% 70%,transparent 71%);
 }
 
-.ocean{
-  position:fixed;
-  left:0;
-  right:0;
+/* CLOUDS */
+.cloud{
+  position:absolute;
+  width:170px;
+  height:42px;
+  background:rgba(255,245,239,.5);
+  border-radius:50px;
+  filter:blur(.3px);
+}
+
+.cloud:before,
+.cloud:after{
+  content:"";
+  position:absolute;
+  background:inherit;
+  border-radius:50%;
+}
+
+.cloud:before{
+  width:65px;height:65px;
+  left:28px;bottom:10px;
+}
+.cloud:after{
+  width:85px;height:85px;
+  right:22px;bottom:4px;
+}
+
+.cloud.one{top:14%;left:8%;transform:scale(.8)}
+.cloud.two{top:31%;left:33%;transform:scale(.5);opacity:.55}
+.cloud.three{top:9%;right:8%;transform:scale(.65);opacity:.6}
+
+/* DISTANT MOUNTAINS */
+.mountains{
+  position:absolute;
+  bottom:29%;
+  left:-5%;
+  width:110%;
+  height:180px;
+}
+
+.mountain{
+  position:absolute;
   bottom:0;
-  height:42%;
-  z-index:-7;
+  width:0;
+  height:0;
+  border-left:180px solid transparent;
+  border-right:180px solid transparent;
+  border-bottom:190px solid rgba(92,126,132,.22);
+}
+
+.m1{left:5%}
+.m2{left:32%;transform:scale(.8)}
+.m3{left:58%;transform:scale(1.1)}
+.m4{right:-5%;transform:scale(.7)}
+
+/* OCEAN */
+.ocean{
+  position:absolute;
+  bottom:0;
+  width:100%;
+  height:39%;
   background:
     repeating-linear-gradient(
-      175deg,
-      rgba(255,255,255,.20) 0 2px,
-      transparent 2px 18px
+      176deg,
+      transparent 0 17px,
+      rgba(255,255,255,.22) 18px 20px,
+      transparent 21px 36px
     ),
-    linear-gradient(#7bc1c7,#66aebd);
-  opacity:.92;
+    linear-gradient(#8bc8ca,#62aebc);
 }
 
 .ocean:before{
   content:"";
   position:absolute;
   top:-28px;
+  left:-4%;
+  width:108%;
+  height:65px;
+  border-radius:50%;
+  background:#9bd1ce;
+}
+
+/* SUN REFLECTION */
+.reflection{
+  position:absolute;
+  bottom:26%;
+  right:20%;
+  width:120px;
+  height:220px;
+  background:
+    repeating-linear-gradient(
+      180deg,
+      rgba(255,239,173,.55) 0 6px,
+      transparent 7px 18px
+    );
+  filter:blur(2px);
+  opacity:.7;
+  transform:perspective(150px) rotateX(15deg);
+}
+
+/* BEACH */
+.beach{
+  position:absolute;
+  bottom:-4%;
   left:-5%;
   width:110%;
-  height:65px;
-  background:#9bd4d3;
-  border-radius:50%;
-  box-shadow:0 -15px 20px rgba(255,255,255,.25);
-}
-
-.sand{
-  position:fixed;
-  bottom:0;
-  left:0;
-  width:100%;
-  height:18%;
+  height:22%;
   background:
-    radial-gradient(circle at 15% 35%,rgba(255,255,255,.3) 0 2px,transparent 3px),
-    radial-gradient(circle at 65% 55%,rgba(255,255,255,.25) 0 2px,transparent 3px),
-    linear-gradient(#f5cba8,#edb996);
-  clip-path:ellipse(75% 100% at 50% 100%);
-  z-index:-5;
+    radial-gradient(circle at 20% 30%,rgba(255,255,255,.25) 0 2px,transparent 3px),
+    radial-gradient(circle at 70% 55%,rgba(255,255,255,.3) 0 2px,transparent 3px),
+    linear-gradient(#f2c9aa,#e9b995);
+  border-radius:50% 50% 0 0;
 }
 
-/* =========================
-   PALM TREE
-========================= */
+/* =====================================================
+   PALM TREE — LEFT SIDE
+===================================================== */
 
 .palm{
-  position:fixed;
-  left:-15px;
-  bottom:17%;
-  width:180px;
-  height:350px;
-  z-index:-3;
-  transform-origin:bottom;
-  animation:palmMove 6s ease-in-out infinite;
+  position:absolute;
+  bottom:12%;
+  left:-35px;
+  width:240px;
+  height:430px;
+  transform-origin:bottom center;
+  animation:sway 7s ease-in-out infinite;
+}
+
+@keyframes sway{
+  50%{transform:rotate(2deg)}
 }
 
 .trunk{
   position:absolute;
   bottom:0;
-  left:76px;
-  width:25px;
-  height:285px;
-  background:linear-gradient(90deg,#6d493d,#9c6651,#67443c);
-  border-radius:70% 30% 10% 10%;
-  transform:rotate(8deg);
+  left:92px;
+  width:32px;
+  height:345px;
+  border-radius:80% 25% 5% 5%;
+  background:
+    repeating-linear-gradient(
+      175deg,
+      #765047 0 8px,
+      #8e5e50 9px 15px
+    );
+  transform:rotate(7deg);
+}
+
+.leaves{
+  position:absolute;
+  left:40px;
+  top:35px;
+  width:170px;
+  height:130px;
 }
 
 .leaf{
   position:absolute;
-  width:115px;
-  height:28px;
-  background:#557c66;
+  left:70px;
+  top:50px;
+  width:145px;
+  height:25px;
+  background:#547761;
   border-radius:100% 0 100% 0;
-  transform-origin:10px 50%;
+  transform-origin:left center;
 }
 
-.leaf:nth-child(2){top:30px;left:60px;transform:rotate(-10deg)}
-.leaf:nth-child(3){top:42px;left:48px;transform:rotate(35deg)}
-.leaf:nth-child(4){top:32px;left:40px;transform:rotate(75deg)}
-.leaf:nth-child(5){top:40px;left:45px;transform:rotate(120deg)}
-.leaf:nth-child(6){top:50px;left:50px;transform:rotate(160deg)}
-.leaf:nth-child(7){top:43px;left:52px;transform:rotate(205deg)}
-.leaf:nth-child(8){top:32px;left:55px;transform:rotate(250deg)}
+.leaf:nth-child(1){transform:rotate(-65deg)}
+.leaf:nth-child(2){transform:rotate(-35deg)}
+.leaf:nth-child(3){transform:rotate(0deg)}
+.leaf:nth-child(4){transform:rotate(35deg)}
+.leaf:nth-child(5){transform:rotate(65deg)}
+.leaf:nth-child(6){transform:rotate(105deg)}
+.leaf:nth-child(7){transform:rotate(145deg)}
+.leaf:nth-child(8){transform:rotate(190deg)}
+.leaf:nth-child(9){transform:rotate(225deg)}
 
-@keyframes palmMove{
-  50%{transform:rotate(2deg)}
-}
+/* =====================================================
+   TULIP PLANTER — RIGHT FOREGROUND
+===================================================== */
 
-/* =========================
-   WHITE DOODLES
-========================= */
-
-.doodles{
-  position:fixed;
-  inset:0;
-  pointer-events:none;
-  z-index:-1;
-}
-
-.doodle{
+.flowerGarden{
   position:absolute;
-  color:white;
-  opacity:.75;
-  font-size:24px;
-  animation:floatDoodle 5s ease-in-out infinite;
+  right:3%;
+  bottom:5%;
+  width:290px;
+  height:230px;
+  animation:gardenFloat 5s ease-in-out infinite;
 }
 
-.d1{left:7%;top:12%}
-.d2{left:26%;top:20%;font-size:16px;animation-delay:1s}
-.d3{right:9%;top:12%;font-size:30px;animation-delay:2s}
-.d4{right:19%;top:35%;font-size:18px;animation-delay:.5s}
-.d5{left:10%;top:58%;font-size:19px;animation-delay:1.4s}
-.d6{right:6%;top:63%;font-size:27px;animation-delay:2.2s}
-.d7{left:34%;top:70%;font-size:14px}
-.d8{right:31%;top:76%;font-size:20px;animation-delay:1s}
-
-@keyframes floatDoodle{
-  50%{transform:translateY(-10px) rotate(8deg)}
+@keyframes gardenFloat{
+  50%{transform:translateY(-4px)}
 }
 
-/* =========================
-   FLOWER PLANTER
-========================= */
-
-.flower-scene{
-  position:fixed;
-  right:5%;
-  bottom:7%;
-  width:250px;
-  height:190px;
-  z-index:-2;
-}
-
-.planter{
+.pot{
   position:absolute;
   bottom:0;
-  left:30px;
-  width:190px;
-  height:75px;
-  background:linear-gradient(90deg,#fff,#f7f1e8);
-  border-radius:8px 8px 25px 25px;
-  box-shadow:0 15px 25px rgba(75,70,70,.16);
+  left:35px;
+  width:220px;
+  height:90px;
+  background:linear-gradient(90deg,#fffdf8,#f3eee6);
+  border-radius:7px 7px 35px 35px;
+  box-shadow:0 15px 30px rgba(70,55,55,.18);
 }
 
-.planter:before{
+.pot:before{
   content:"";
   position:absolute;
-  top:-9px;
-  left:-7px;
-  width:204px;
-  height:20px;
+  top:-12px;
+  left:-8px;
+  width:236px;
+  height:25px;
   border-radius:50%;
-  background:#fffdf8;
+  background:#fffefa;
 }
 
-.flower{
+.soil{
   position:absolute;
-  bottom:67px;
-  width:18px;
-  height:85px;
+  top:-5px;
+  left:8px;
+  width:204px;
+  height:18px;
+  background:#806050;
+  border-radius:50%;
+}
+
+.stem{
+  position:absolute;
+  bottom:77px;
+  width:10px;
+  height:110px;
   background:#628a67;
   border-radius:50%;
   transform-origin:bottom;
 }
 
-.f1{left:55px;transform:rotate(-18deg)}
-.f2{left:85px;height:105px;transform:rotate(4deg)}
-.f3{left:120px;height:90px;transform:rotate(17deg)}
-.f4{left:145px;height:78px;transform:rotate(25deg)}
+.s1{left:70px;transform:rotate(-18deg)}
+.s2{left:110px;height:125px}
+.s3{left:150px;height:105px;transform:rotate(13deg)}
+.s4{left:183px;height:92px;transform:rotate(23deg)}
 
 .tulip{
   position:absolute;
-  width:43px;
-  height:43px;
+  width:45px;
+  height:46px;
+  top:-25px;
+  left:-17px;
   border-radius:55% 55% 45% 45%;
-  background:linear-gradient(135deg,#ff8eae,#f7a4bd);
-  top:-20px;
-  left:-12px;
-  box-shadow:0 5px 10px rgba(200,90,120,.18);
+  background:linear-gradient(135deg,#ff82a7,#f6aec1);
+  box-shadow:0 5px 12px rgba(180,90,110,.18);
 }
 
-.tulip:after{
+.tulip:before{
   content:"";
   position:absolute;
-  width:20px;
-  height:20px;
-  background:#ffc2d2;
-  border-radius:70% 30% 60% 40%;
-  left:2px;
-  top:4px;
+  width:22px;
+  height:34px;
+  left:10px;
+  top:-5px;
+  border-radius:50%;
+  background:#ffc2d1;
+  transform:rotate(-12deg);
 }
 
-/* =========================
+.leaf{
+  position:absolute;
+  width:45px;
+  height:18px;
+  background:#72956f;
+  border-radius:100% 0 100% 0;
+  bottom:105px;
+}
+
+.l1{left:58px;transform:rotate(25deg)}
+.l2{left:138px;transform:rotate(-25deg)}
+.l3{left:180px;transform:rotate(25deg)}
+
+/* =====================================================
+   DOODLES
+===================================================== */
+
+.doodles{
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+}
+
+.doodle{
+  position:absolute;
+  color:#fffdf9;
+  font-size:27px;
+  font-weight:300;
+  text-shadow:0 2px 10px rgba(255,255,255,.4);
+  animation:doodleFloat 4s ease-in-out infinite;
+}
+
+@keyframes doodleFloat{
+  50%{transform:translateY(-9px) rotate(8deg)}
+}
+
+.d1{top:11%;left:29%}
+.d2{top:22%;right:7%;font-size:19px}
+.d3{top:39%;left:30%;font-size:19px}
+.d4{top:51%;right:23%}
+.d5{top:66%;left:8%;font-size:20px}
+.d6{top:72%;right:39%;font-size:16px}
+.d7{top:17%;left:51%;font-size:15px}
+.d8{top:61%;right:8%}
+
+/* =====================================================
    CONTENT
-========================= */
+===================================================== */
 
 .content{
-  width:min(900px,92%);
-  margin:auto;
   position:relative;
-  z-index:2;
+  z-index:5;
+  width:min(920px,92%);
+  margin:auto;
 }
 
 .hero{
@@ -283,390 +410,435 @@ body{
   align-items:center;
   justify-content:center;
   text-align:center;
-  padding:60px 10px;
 }
 
-.hero-card{
-  width:min(650px,100%);
-  padding:45px 25px;
+.heroCard{
+  max-width:680px;
+  padding:48px 30px;
+  border-radius:40px;
   background:rgba(255,255,255,.20);
   border:1px solid rgba(255,255,255,.65);
-  backdrop-filter:blur(10px);
-  border-radius:35px;
-  box-shadow:0 25px 70px rgba(100,65,70,.12);
+  backdrop-filter:blur(12px);
+  box-shadow:0 30px 80px rgba(75,55,60,.14);
 }
 
-.mini{
-  font-size:13px;
+.eyebrow{
+  color:#fff;
   letter-spacing:4px;
   text-transform:uppercase;
-  color:white;
+  font-size:11px;
   font-weight:700;
-  margin-bottom:15px;
 }
 
 h1{
-  font-family:'Caveat',cursive;
-  font-size:clamp(55px,11vw,105px);
-  line-height:.9;
-  color:#fffdf8;
-  text-shadow:0 5px 20px rgba(120,75,80,.15);
+  font-family:Caveat,cursive;
+  color:#fffdf9;
+  font-size:clamp(65px,12vw,115px);
+  line-height:.82;
+  margin:15px 0 25px;
+  text-shadow:0 5px 25px rgba(110,70,75,.16);
 }
 
-.hero-sub{
-  margin:25px auto;
-  max-width:500px;
+.heroText{
+  color:#fffaf7;
   line-height:1.8;
-  color:#fffaf5;
-  font-size:16px;
+  max-width:550px;
+  margin:auto;
 }
 
-.open-btn{
+.mainButton{
+  margin-top:28px;
   border:0;
+  background:#fffaf2;
+  color:#b9687d;
   padding:15px 28px;
   border-radius:999px;
-  background:#fffaf2;
-  color:#b76579;
+  font-family:inherit;
   font-weight:800;
-  font-size:15px;
   cursor:pointer;
-  box-shadow:0 10px 30px rgba(90,50,60,.15);
+  box-shadow:0 12px 30px rgba(75,50,60,.15);
   transition:.3s;
 }
 
-.open-btn:hover{
-  transform:translateY(-4px) scale(1.03);
+.mainButton:hover{
+  transform:translateY(-5px) rotate(-1deg);
 }
 
-/* =========================
+/* =====================================================
    SECTIONS
-========================= */
+===================================================== */
 
 section{
-  padding:90px 0;
+  padding:100px 0;
 }
 
-.section-title{
+.sectionHead{
   text-align:center;
-  margin-bottom:35px;
+  margin-bottom:38px;
 }
 
-.section-title span{
-  color:white;
-  font-size:12px;
+.sectionHead small{
+  color:#fff;
   letter-spacing:3px;
   text-transform:uppercase;
+  font-size:11px;
+  font-weight:700;
 }
 
-.section-title h2{
-  font-family:'Caveat',cursive;
-  color:white;
-  font-size:52px;
-  margin-top:5px;
+.sectionHead h2{
+  color:#fff;
+  font-family:Caveat,cursive;
+  font-size:58px;
+  line-height:1;
+  margin-top:7px;
 }
 
-/* =========================
-   MORNING NOTE
-========================= */
+/* =====================================================
+   PAPER
+===================================================== */
 
-.note{
-  background:#fffaf0;
-  padding:38px 30px;
-  border-radius:7px;
-  transform:rotate(-1deg);
-  box-shadow:0 20px 45px rgba(90,60,60,.15);
+.paper{
+  background:
+    repeating-linear-gradient(
+      0deg,
+      transparent 0 31px,
+      rgba(180,145,135,.10) 32px
+    ),
+    #fffaf1;
+  padding:42px 34px;
+  border-radius:5px;
+  box-shadow:0 25px 60px rgba(75,55,55,.16);
   position:relative;
+  transform:rotate(-.6deg);
 }
 
-.note:before{
+.paper:before{
   content:"";
   position:absolute;
-  width:80px;
-  height:24px;
-  background:rgba(255,193,170,.65);
-  top:-11px;
-  left:42%;
+  width:85px;
+  height:25px;
+  background:rgba(255,183,180,.58);
+  top:-12px;
+  left:43%;
   transform:rotate(-3deg);
 }
 
-.note h3{
-  font-family:'Caveat',cursive;
-  font-size:40px;
-  color:#bc7182;
-  margin-bottom:15px;
+.paper h3{
+  font-family:Caveat,cursive;
+  color:#b9687d;
+  font-size:43px;
+  margin-bottom:18px;
 }
 
-.note p{
-  line-height:1.9;
+.paper p{
   font-size:15px;
-  margin-bottom:15px;
+  line-height:2;
+  margin-bottom:18px;
 }
 
-.signature{
+.sign{
+  font-family:Caveat,cursive;
+  color:#b9687d;
   text-align:right;
-  font-family:'Caveat',cursive;
-  font-size:28px;
-  color:#b76579;
+  font-size:29px;
 }
 
-/* =========================
-   SELF CARE
-========================= */
+/* =====================================================
+   CARE CARDS
+===================================================== */
 
-.care-grid{
+.careGrid{
   display:grid;
-  grid-template-columns:repeat(2,1fr);
+  grid-template-columns:repeat(3,1fr);
   gap:18px;
 }
 
 .care{
-  background:rgba(255,255,255,.35);
-  border:1px solid rgba(255,255,255,.6);
-  backdrop-filter:blur(10px);
-  padding:25px;
+  background:rgba(255,250,243,.72);
+  border:1px solid rgba(255,255,255,.8);
   border-radius:25px;
+  padding:25px 20px;
+  box-shadow:0 15px 35px rgba(75,55,55,.09);
   transition:.3s;
 }
 
+.care:nth-child(even){transform:rotate(1deg)}
+.care:nth-child(odd){transform:rotate(-1deg)}
+
 .care:hover{
-  transform:translateY(-7px) rotate(-1deg);
+  transform:translateY(-7px) rotate(0);
 }
 
-.care-icon{
-  font-size:35px;
-  margin-bottom:10px;
-}
-
+.careIcon{font-size:35px}
 .care h3{
-  color:white;
-  margin-bottom:8px;
+  margin:12px 0 7px;
+  color:#ad697b;
 }
-
 .care p{
-  color:#fffaf7;
-  line-height:1.7;
-  font-size:14px;
+  font-size:13px;
+  line-height:1.75;
 }
 
-/* =========================
+/* =====================================================
    LETTER
-========================= */
+===================================================== */
 
 .letter{
-  background:#fffaf2;
-  padding:40px 30px;
-  border-radius:4px;
-  box-shadow:0 25px 60px rgba(80,50,55,.16);
+  background:#fffaf1;
+  padding:45px 34px;
+  box-shadow:0 25px 60px rgba(70,50,50,.14);
   position:relative;
 }
 
-.letter:after{
+.letter:before{
   content:"♡";
   position:absolute;
   right:25px;
   top:18px;
-  font-size:32px;
-  color:#e5a0ae;
+  font-size:35px;
+  color:#e7a1b0;
 }
 
 .letter h3{
-  font-family:'Caveat',cursive;
-  font-size:43px;
-  color:#b76579;
+  font-family:Caveat,cursive;
+  color:#b9687d;
+  font-size:45px;
   margin-bottom:20px;
 }
 
 .letter p{
   line-height:2;
   font-size:15px;
-  margin-bottom:22px;
+  margin-bottom:21px;
 }
 
-/* =========================
+/* =====================================================
    POEMS
-========================= */
+===================================================== */
 
-.poem-grid{
+.poemGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:20px;
+  gap:22px;
 }
 
 .poem{
-  background:rgba(255,250,242,.84);
+  background:rgba(255,250,243,.9);
   padding:30px 25px;
-  border-radius:20px;
-  box-shadow:0 18px 35px rgba(70,55,55,.12);
+  border-radius:23px;
+  box-shadow:0 18px 40px rgba(75,55,55,.12);
 }
 
+.poem:nth-child(1){transform:rotate(-1deg)}
+.poem:nth-child(2){transform:rotate(1deg)}
+.poem:nth-child(3){transform:rotate(1deg)}
+.poem:nth-child(4){transform:rotate(-1deg)}
+
 .poem h3{
-  font-family:'Caveat',cursive;
-  color:#b76579;
-  font-size:34px;
+  font-family:Caveat,cursive;
+  color:#b9687d;
+  font-size:35px;
   margin-bottom:15px;
 }
 
 .poem p{
-  line-height:1.9;
   white-space:pre-line;
-  font-family:'Caveat',cursive;
-  font-size:21px;
+  font-family:Caveat,cursive;
+  font-size:20px;
+  line-height:1.85;
 }
 
-/* =========================
-   CHARACTERS
-========================= */
+/* =====================================================
+   CUTE ANIME CHARACTERS
+===================================================== */
 
-.characters{
+.characterStage{
   display:flex;
   justify-content:center;
   align-items:flex-end;
-  gap:60px;
-  margin:30px 0;
-  min-height:180px;
+  gap:65px;
+  min-height:230px;
+  margin-bottom:30px;
 }
 
-.character{
-  width:115px;
+.char{
+  position:relative;
+  width:145px;
   text-align:center;
-  position:relative;
-  animation:bob 3s ease-in-out infinite;
+  animation:charBob 3s ease-in-out infinite;
 }
 
-.character:nth-child(2){
-  animation-delay:.5s;
+.char:nth-child(2){animation-delay:.7s}
+
+@keyframes charBob{
+  50%{transform:translateY(-10px)}
 }
 
-@keyframes bob{
-  50%{transform:translateY(-9px)}
-}
-
-.head{
-  width:85px;
-  height:85px;
-  margin:auto;
-  background:#ffe0c9;
-  border-radius:50%;
-  position:relative;
-  border:3px solid rgba(255,255,255,.8);
-  box-shadow:0 8px 20px rgba(70,50,50,.13);
-}
-
-.hair{
-  position:absolute;
-  top:-8px;
-  left:3px;
-  width:79px;
-  height:47px;
-  background:#5d3f43;
-  border-radius:50% 50% 35% 35%;
-}
-
-.fringe{
-  position:absolute;
-  top:25px;
-  left:10px;
-  width:30px;
-  height:25px;
-  background:#5d3f43;
-  border-radius:0 0 70% 20%;
-}
-
-.eye{
-  position:absolute;
-  width:7px;
-  height:10px;
-  border-radius:50%;
-  background:#49383b;
-  top:48px;
-}
-
-.eye.left{left:24px}
-.eye.right{right:24px}
-
-.mouth{
-  position:absolute;
-  width:18px;
-  height:9px;
-  border-bottom:3px solid #a65e6d;
-  border-radius:50%;
-  left:31px;
-  top:65px;
-}
-
-.body{
-  width:75px;
-  height:65px;
-  margin:-4px auto 0;
-  border-radius:35px 35px 15px 15px;
-  border:3px solid rgba(255,255,255,.7);
-}
-
-.ananta .body{
-  background:#ef9fb4;
-}
-
-.varun .body{
-  background:#88bfc5;
-}
-
-.name{
+.charName{
   margin-top:8px;
   color:white;
   font-weight:800;
-  font-size:13px;
+  font-size:14px;
 }
 
-.blush{
+.face{
+  position:relative;
+  width:105px;
+  height:105px;
+  margin:auto;
+  border-radius:48% 48% 45% 45%;
+  background:#ffe1cb;
+  border:4px solid rgba(255,255,255,.8);
+  box-shadow:0 10px 25px rgba(80,55,55,.14);
+  overflow:hidden;
+}
+
+.hairTop{
   position:absolute;
-  width:14px;
-  height:7px;
-  background:#f39aaa;
+  top:-15px;
+  left:-3px;
+  width:111px;
+  height:65px;
+  background:#563f45;
+  border-radius:55% 55% 30% 30%;
+}
+
+.hairLock{
+  position:absolute;
+  top:25px;
+  left:8px;
+  width:37px;
+  height:48px;
+  background:#563f45;
+  border-radius:0 0 70% 20%;
+  transform:rotate(12deg);
+}
+
+.animeEye{
+  position:absolute;
+  top:58px;
+  width:11px;
+  height:15px;
+  background:#44363a;
   border-radius:50%;
-  opacity:.7;
-  top:61px;
 }
 
-.blush.l{left:13px}
-.blush.r{right:13px}
+.animeEye.left{left:27px}
+.animeEye.right{right:27px}
 
-.character.happy{
-  animation:happy .5s ease 2;
-}
-
-@keyframes happy{
-  50%{transform:translateY(-25px) rotate(4deg)}
-}
-
-.character.shocked .mouth{
-  width:14px;
-  height:14px;
-  border:3px solid #a65e6d;
+.animeEye:after{
+  content:"";
+  position:absolute;
+  width:4px;
+  height:4px;
+  background:white;
   border-radius:50%;
-  left:34px;
+  top:2px;
+  left:2px;
 }
 
-.character.shocked{
-  animation:shock .45s ease 2;
+.animeMouth{
+  position:absolute;
+  left:43px;
+  top:78px;
+  width:20px;
+  height:11px;
+  border-bottom:3px solid #a65f70;
+  border-radius:50%;
 }
 
-@keyframes shock{
-  50%{transform:scale(1.08) translateY(-5px)}
+.cheek{
+  position:absolute;
+  top:73px;
+  width:17px;
+  height:8px;
+  background:#f39baa;
+  opacity:.65;
+  border-radius:50%;
 }
 
-/* =========================
+.cheek.left{left:11px}
+.cheek.right{right:11px}
+
+.bodyCute{
+  width:90px;
+  height:70px;
+  margin:-3px auto 0;
+  border-radius:40px 40px 18px 18px;
+  border:4px solid rgba(255,255,255,.75);
+  position:relative;
+}
+
+.anantaBody{background:#f29db4}
+.varunBody{background:#82bec5}
+
+.bodyCute:before{
+  content:"";
+  position:absolute;
+  width:25px;
+  height:13px;
+  border-radius:50%;
+  background:rgba(255,255,255,.35);
+  left:30px;
+  top:15px;
+}
+
+.arm{
+  position:absolute;
+  width:22px;
+  height:50px;
+  border-radius:20px;
+  background:inherit;
+  top:12px;
+}
+
+.arm.left{left:-17px;transform:rotate(28deg)}
+.arm.right{right:-17px;transform:rotate(-28deg)}
+
+.wave .arm.right{
+  animation:wave 0.45s ease-in-out infinite alternate;
+  transform-origin:bottom center;
+}
+
+@keyframes wave{
+  to{transform:rotate(-55deg)}
+}
+
+.reaction{
+  position:absolute;
+  top:-35px;
+  right:-35px;
+  padding:7px 11px;
+  background:#fffaf1;
+  color:#ae687b;
+  border-radius:15px 15px 15px 3px;
+  font-size:11px;
+  font-weight:800;
+  opacity:0;
+  transform:scale(.5);
+  transition:.3s;
+  box-shadow:0 8px 18px rgba(70,50,50,.12);
+}
+
+.char.react .reaction{
+  opacity:1;
+  transform:scale(1);
+}
+
+/* =====================================================
    QUIZ
-========================= */
+===================================================== */
 
-.quiz-wrap{
+.quizBox{
   background:rgba(255,255,255,.25);
-  border:1px solid rgba(255,255,255,.55);
-  backdrop-filter:blur(12px);
-  padding:30px 20px;
-  border-radius:30px;
+  border:1px solid rgba(255,255,255,.7);
+  backdrop-filter:blur(13px);
+  padding:30px 22px;
+  border-radius:32px;
 }
 
 .progress{
+  width:100%;
   height:7px;
   background:rgba(255,255,255,.4);
   border-radius:20px;
@@ -674,27 +846,26 @@ section{
   margin-bottom:25px;
 }
 
-.progress-bar{
+.progressBar{
   height:100%;
   width:10%;
   background:#fffaf0;
-  border-radius:20px;
   transition:.4s;
 }
 
-.question-number{
-  color:white;
-  font-size:12px;
-  letter-spacing:2px;
+.qNo{
+  color:#fff;
+  font-size:11px;
   font-weight:800;
+  letter-spacing:2px;
 }
 
 .question{
-  color:white;
-  font-size:25px;
+  color:#fff;
+  font-size:24px;
+  line-height:1.45;
   font-weight:700;
   margin:10px 0 22px;
-  line-height:1.4;
 }
 
 .answers{
@@ -703,142 +874,149 @@ section{
 }
 
 .answer{
-  border:1px solid rgba(255,255,255,.7);
-  background:rgba(255,250,245,.45);
+  width:100%;
+  border:1px solid rgba(255,255,255,.75);
+  background:rgba(255,250,245,.4);
   color:white;
   padding:15px;
   border-radius:17px;
-  cursor:pointer;
+  text-align:left;
   font-family:inherit;
   font-weight:700;
-  text-align:left;
+  cursor:pointer;
   transition:.25s;
 }
 
 .answer:hover{
-  background:#fffaf0;
-  color:#ae6879;
-  transform:translateX(5px);
+  background:#fffaf1;
+  color:#ad687a;
+  transform:translateX(6px);
 }
 
 .answer.correct{
-  background:#e5f4dc;
-  color:#547351;
+  background:#e2f1dc;
+  color:#587151;
 }
 
 .answer.wrong{
   background:#ffe0df;
-  color:#9c5d63;
+  color:#a45c63;
 }
 
-.quiz-result{
+.quizResult{
   display:none;
   text-align:center;
   color:white;
 }
 
-.quiz-result h2{
-  font-family:'Caveat',cursive;
-  font-size:55px;
+.quizResult h2{
+  font-family:Caveat,cursive;
+  font-size:58px;
 }
 
-/* =========================
+/* =====================================================
    FINAL
-========================= */
+===================================================== */
 
-.final{
+.finalCard{
   text-align:center;
-  padding-bottom:130px;
+  background:rgba(255,250,243,.9);
+  padding:50px 25px;
+  border-radius:32px;
+  box-shadow:0 25px 60px rgba(70,50,50,.14);
 }
 
-.final-card{
-  background:rgba(255,250,242,.87);
-  padding:45px 25px;
-  border-radius:30px;
-  box-shadow:0 25px 55px rgba(70,50,55,.15);
+.finalCard h2{
+  font-family:Caveat,cursive;
+  color:#b9687d;
+  font-size:60px;
 }
 
-.final-card h2{
-  font-family:'Caveat',cursive;
-  font-size:55px;
-  color:#b76579;
-}
-
-.final-card p{
-  line-height:1.9;
-  margin:18px auto;
+.finalCard p{
   max-width:600px;
+  margin:18px auto;
+  line-height:1.9;
 }
 
-/* =========================
+/* =====================================================
    FLOATING PETALS
-========================= */
+===================================================== */
 
 .petal{
   position:fixed;
   top:-30px;
   width:10px;
-  height:15px;
-  background:#ffd0dc;
+  height:17px;
+  background:#ffc2d1;
   border-radius:100% 0 100% 0;
-  opacity:.7;
   pointer-events:none;
-  z-index:5;
-  animation:fall linear forwards;
+  z-index:30;
+  animation:petalFall linear forwards;
 }
 
-@keyframes fall{
+@keyframes petalFall{
   to{
-    transform:translateY(110vh) rotate(720deg);
+    transform:translateY(110vh) translateX(100px) rotate(720deg);
+    opacity:0;
   }
 }
 
-/* =========================
-   RESPONSIVE
-========================= */
+/* =====================================================
+   MOBILE
+===================================================== */
 
-@media(max-width:650px){
+@media(max-width:700px){
 
-  .sun{
-    width:90px;
-    height:90px;
-    right:15%;
-    top:14%;
+  .bigSun{
+    width:100px;
+    height:100px;
+    right:13%;
+    top:15%;
+  }
+
+  .rays{
+    right:4%;
+    top:8%;
+    transform:scale(.75);
   }
 
   .palm{
-    transform:scale(.7);
+    transform:scale(.62);
     transform-origin:bottom left;
-    left:-45px;
+    left:-75px;
   }
 
-  .flower-scene{
-    transform:scale(.65);
+  .flowerGarden{
+    transform:scale(.62);
     transform-origin:bottom right;
-    right:-25px;
-    bottom:5%;
+    right:-45px;
   }
 
-  .care-grid,
-  .poem-grid{
+  .careGrid,
+  .poemGrid{
     grid-template-columns:1fr;
   }
 
-  .characters{
-    gap:35px;
+  .characterStage{
+    gap:30px;
+  }
+
+  .char{
+    width:125px;
+    transform:scale(.88);
   }
 
   section{
-    padding:65px 0;
+    padding:70px 0;
   }
 
-  .letter,
-  .note{
-    padding:28px 21px;
+  .paper,
+  .letter{
+    padding:30px 21px;
   }
 
-  .letter p,
-  .note p{
+  .paper p,
+  .letter p{
     font-size:14px;
   }
 
@@ -851,189 +1029,244 @@ section{
 
 <body>
 
-<div class="page">
+<!-- =====================================================
+     BACKGROUND
+===================================================== -->
 
-<div class="sky"></div>
-<div class="sun"></div>
-<div class="ocean"></div>
-<div class="sand"></div>
+<div class="scene">
 
-<div class="palm">
-  <div class="trunk"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
-  <div class="leaf"></div>
+  <div class="bigSun"></div>
+  <div class="rays"></div>
+
+  <div class="cloud one"></div>
+  <div class="cloud two"></div>
+  <div class="cloud three"></div>
+
+  <div class="mountains">
+    <div class="mountain m1"></div>
+    <div class="mountain m2"></div>
+    <div class="mountain m3"></div>
+    <div class="mountain m4"></div>
+  </div>
+
+  <div class="reflection"></div>
+  <div class="ocean"></div>
+  <div class="beach"></div>
+
+  <!-- PALM -->
+  <div class="palm">
+    <div class="trunk"></div>
+    <div class="leaves">
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+      <div class="leaf"></div>
+    </div>
+  </div>
+
+  <!-- TULIPS -->
+  <div class="flowerGarden">
+
+    <div class="soil"></div>
+
+    <div class="stem s1"><div class="tulip"></div></div>
+    <div class="stem s2"><div class="tulip"></div></div>
+    <div class="stem s3"><div class="tulip"></div></div>
+    <div class="stem s4"><div class="tulip"></div></div>
+
+    <div class="leaf l1"></div>
+    <div class="leaf l2"></div>
+    <div class="leaf l3"></div>
+
+    <div class="pot"></div>
+
+  </div>
+
+  <!-- WHITE DOODLES -->
+  <div class="doodles">
+    <span class="doodle d1">✧</span>
+    <span class="doodle d2">♡</span>
+    <span class="doodle d3">☆</span>
+    <span class="doodle d4">✦</span>
+    <span class="doodle d5">♡</span>
+    <span class="doodle d6">✧</span>
+    <span class="doodle d7">☆</span>
+    <span class="doodle d8">♡</span>
+  </div>
+
 </div>
 
-<div class="flower-scene">
-  <div class="flower f1"><div class="tulip"></div></div>
-  <div class="flower f2"><div class="tulip"></div></div>
-  <div class="flower f3"><div class="tulip"></div></div>
-  <div class="flower f4"><div class="tulip"></div></div>
-  <div class="planter"></div>
-</div>
-
-<div class="doodles">
-  <div class="doodle d1">☆</div>
-  <div class="doodle d2">✧</div>
-  <div class="doodle d3">♡</div>
-  <div class="doodle d4">✦</div>
-  <div class="doodle d5">♡</div>
-  <div class="doodle d6">☆</div>
-  <div class="doodle d7">✧</div>
-  <div class="doodle d8">♡</div>
-</div>
 
 <div class="content">
 
-<!-- HERO -->
+<!-- =====================================================
+     HERO
+===================================================== -->
 
-<header class="hero">
-  <div class="hero-card">
+<section class="hero">
 
-    <div class="mini">a little morning surprise</div>
+  <div class="heroCard">
 
-    <h1>Good Morning,<br>Anu 🌷</h1>
+    <div class="eyebrow">a tiny piece of morning sunshine</div>
 
-    <p class="hero-sub">
-      Somewhere between the sunrise, the ocean and a ridiculous amount
-      of missing you… there is this little corner of the internet made
-      just for you.
+    <h1>
+      Good Morning,<br>
+      Anu 🌷
+    </h1>
+
+    <p class="heroText">
+      The sun is up, the ocean is sparkling,
+      the flowers are awake...
+      and somewhere in all of that,
+      one annoying idiot made this little place for you.
     </p>
 
-    <button class="open-btn" onclick="document.getElementById('note').scrollIntoView()">
-      Open your morning ♡
+    <button class="mainButton"
+      onclick="document.getElementById('morning').scrollIntoView()">
+      Come here, sleepyhead ♡
     </button>
 
   </div>
-</header>
 
-
-<!-- MORNING NOTE -->
-
-<section id="note">
-
-  <div class="section-title">
-    <span>for my favourite person</span>
-    <h2>Before your day begins...</h2>
-  </div>
-
-  <div class="note">
-
-    <h3>Good morning, sleepy girl ☀️</h3>
-
-    <p>
-      I hope you woke up feeling a little lighter today.
-      And yes, before you ask — no, sleeping for another five hours
-      does not count as a productive Saturday.
-    </p>
-
-    <p>
-      Today is yours. Take it slowly. Eat something properly,
-      drink some water, breathe, laugh at something stupid,
-      and please don't spend the entire day fighting imaginary
-      arguments inside your head.
-    </p>
-
-    <p>
-      You don't have to make today perfect.
-      Just make it yours.
-    </p>
-
-    <p>
-      And if the morning feels a little quiet,
-      remember that somewhere out here is one annoying idiot
-      who is probably thinking about you already.
-    </p>
-
-    <div class="signature">
-      — your favourite idiot, Varun ♡
-    </div>
-
-  </div>
 </section>
 
 
-<!-- SELF CARE -->
+<!-- =====================================================
+     MORNING NOTE
+===================================================== -->
+
+<section id="morning">
+
+  <div class="sectionHead">
+    <small>Saturday morning edition</small>
+    <h2>Before you disappear into sleep again...</h2>
+  </div>
+
+  <div class="paper">
+
+    <h3>Good morning, my sleepy girl ☀️</h3>
+
+    <p>
+      I hope you woke up feeling a little happier today.
+      And because it's Saturday, I am officially allowing you
+      to be lazy... but only a little.
+    </p>
+
+    <p>
+      Eat something properly, drink some water,
+      get comfortable, listen to your favourite songs,
+      laugh at something completely stupid,
+      and please don't let your brain start writing
+      unnecessary stories again.
+    </p>
+
+    <p>
+      You don't have to make today productive.
+      You don't have to make it perfect.
+      Just make it a nice little day for yourself.
+    </p>
+
+    <p>
+      And if you somehow forget to take care of yourself,
+      remember that one irritating person miles away
+      is going to remind you anyway.
+    </p>
+
+    <div class="sign">
+      — Varun, your personal reminder service ♡
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =====================================================
+     SELF CARE
+===================================================== -->
 
 <section>
 
-  <div class="section-title">
-    <span>official saturday instructions</span>
-    <h2>Take care of yourself 🌸</h2>
+  <div class="sectionHead">
+    <small>very serious instructions</small>
+    <h2>Anu's Saturday Checklist 🌸</h2>
   </div>
 
-  <div class="care-grid">
+  <div class="careGrid">
 
     <div class="care">
-      <div class="care-icon">🥐</div>
-      <h3>Eat something</h3>
+      <div class="careIcon">🥐</div>
+      <h3>Breakfast first.</h3>
       <p>
-        Please don't survive on air, vibes and one sip of water.
-        Your body deserves an actual breakfast.
+        Please don't run your entire day on one sip of water
+        and pure confidence. Eat something.
       </p>
     </div>
 
     <div class="care">
-      <div class="care-icon">💧</div>
-      <h3>Drink water</h3>
+      <div class="careIcon">💧</div>
+      <h3>Hydrate, madam.</h3>
       <p>
-        Yes, water. Not just whatever drink happens to be sitting
-        beside you. Go hydrate, madam.
+        Your body is not powered by Wi-Fi.
+        Go drink some water.
       </p>
     </div>
 
     <div class="care">
-      <div class="care-icon">🌷</div>
-      <h3>Be gentle with yourself</h3>
-      <p>
-        You don't need to have everything figured out today.
-        Take your time and let yourself enjoy the little things.
-      </p>
-    </div>
-
-    <div class="care">
-      <div class="care-icon">🧠</div>
-      <h3>No unnecessary overthinking</h3>
-      <p>
-        Your brain has officially been placed on Saturday mode.
-        Please stop opening 47 imaginary tabs.
-      </p>
-    </div>
-
-    <div class="care">
-      <div class="care-icon">🌤️</div>
-      <h3>Get some sunlight</h3>
+      <div class="careIcon">🌤️</div>
+      <h3>Get some sunshine.</h3>
       <p>
         Step outside for a little while if you can.
-        Even the sun thinks you should leave your room.
+        The sun has been waiting dramatically.
       </p>
     </div>
 
     <div class="care">
-      <div class="care-icon">💗</div>
-      <h3>Do something that makes you smile</h3>
+      <div class="careIcon">🧠</div>
+      <h3>Close the overthinking tabs.</h3>
       <p>
-        Watch something funny, listen to music, call me,
-        annoy me — basically follow your heart.
+        Your brain does not need 47 imaginary conversations
+        before breakfast.
+      </p>
+    </div>
+
+    <div class="care">
+      <div class="careIcon">🎧</div>
+      <h3>Play something you love.</h3>
+      <p>
+        Music, a funny video, a call...
+        whatever makes your morning feel like yours.
+      </p>
+    </div>
+
+    <div class="care">
+      <div class="careIcon">💗</div>
+      <h3>Be nice to yourself.</h3>
+      <p>
+        You deserve the same kindness you give everyone else.
+        Don't forget that.
       </p>
     </div>
 
   </div>
+
 </section>
 
 
-<!-- LOVE LETTER -->
+<!-- =====================================================
+     LONG DISTANCE LETTER
+===================================================== -->
 
 <section>
 
-  <div class="section-title">
-    <span>a letter from miles away</span>
-    <h2>For you, Anu ♡</h2>
+  <div class="sectionHead">
+    <small>from one side of the distance to the other</small>
+    <h2>A letter for you ♡</h2>
   </div>
 
   <div class="letter">
@@ -1041,30 +1274,30 @@ section{
     <h3>My dearest girl,</h3>
 
     <p>
-      Sometimes I think it's strange how someone can be so far away
-      and still become such a huge part of your everyday life.
-      You're not here beside me, but somehow you're still in my mornings,
-      my random thoughts, my smiles, my worries and all the tiny moments
-      in between.
+      Sometimes I still find it strange how someone can be miles away
+      and somehow become such a huge part of your everyday life.
+      You're not sitting beside me, but you're still somehow present
+      in my mornings, my random thoughts, my smiles and all those
+      tiny moments that nobody else notices.
     </p>
 
     <p>
-      That's the strange and beautiful thing about us.
       We don't get all the ordinary things people usually take for granted.
-      No random walks, no suddenly meeting somewhere, no sitting beside
-      each other just because we can.
+      We can't randomly meet, go for a walk, sit beside each other,
+      or simply look at each other without a screen between us.
     </p>
 
     <p>
-      Instead, we have screens, calls, messages, sleepy conversations,
-      waiting for replies and those little moments where distance somehow
-      feels much smaller than it actually is.
+      Instead, we have messages, calls, sleepy conversations,
+      waiting for replies, random pictures, stupid jokes,
+      and those little moments where somehow the distance doesn't
+      feel quite as big anymore.
     </p>
 
     <p>
-      And honestly, I wouldn't trade what we have for anything.
-      Because somewhere between all those calls and conversations,
-      you became more than just someone I love.
+      And honestly, I love those moments.
+      Somewhere between all those conversations,
+      you became more than someone I love.
       You became someone I look forward to.
     </p>
 
@@ -1080,7 +1313,7 @@ section{
     </p>
 
     <p>
-      I love loving you and maybe making your day a little better.
+      I love loving you and maybe making your day better.
       I love that I'm yours.
       I love that you're mine.
       Beyond that, I really don't care about much anymore...
@@ -1088,39 +1321,44 @@ section{
     </p>
 
     <p>
-      Maybe one day we'll look back at all these miles,
+      Maybe someday we'll look back at all these miles,
       all these screens and all this waiting,
-      and laugh because somehow we made it through.
+      and realise that somehow we made it through.
       Until then, I'll keep choosing you in all the little ways I can.
     </p>
 
     <p>
       Good morning, Anu.
-      I hope today is soft with you.
+      I hope today is gentle, warm and full of little reasons to smile.
     </p>
 
-    <div class="signature">
+    <div class="sign">
       Always yours,<br>
       Varun ♡
     </div>
 
   </div>
+
 </section>
 
 
-<!-- POEMS -->
+<!-- =====================================================
+     POEMS
+===================================================== -->
 
 <section>
 
-  <div class="section-title">
-    <span>a few words for you</span>
-    <h2>Little pieces of my heart 🌷</h2>
+  <div class="sectionHead">
+    <small>little pieces of my heart</small>
+    <h2>For you, in words 🌷</h2>
   </div>
 
-  <div class="poem-grid">
+  <div class="poemGrid">
 
     <div class="poem">
+
       <h3>In Every Little Thing</h3>
+
       <p>
 I look for you in quiet mornings,
 in little songs and golden skies.
@@ -1132,10 +1370,14 @@ I feel you in the calm of night.
 And even when you're miles away,
 you still somehow make everything feel right.
       </p>
+
     </div>
 
+
     <div class="poem">
+
       <h3>Until The Distance Fades</h3>
+
       <p>
 Until the miles become memories,
 until the screens become a thing of the past,
@@ -1149,10 +1391,14 @@ distance only taught us
 how much one person can mean
 to another heart.
       </p>
+
     </div>
 
+
     <div class="poem">
+
       <h3>In Every Universe</h3>
+
       <p>
 I love you,
 In every universe,
@@ -1184,10 +1430,14 @@ In the quiet of the night,
 To hold you,
 In my heart so tight.
       </p>
+
     </div>
 
+
     <div class="poem">
+
       <h3>My Everything</h3>
+
       <p>
 You're my love, my life,
 the air that I breathe.
@@ -1209,69 +1459,103 @@ in the love that you bring.
 You're my world, my galaxy,
 you're my everything.
       </p>
+
     </div>
 
   </div>
+
 </section>
 
 
-<!-- QUIZ -->
+<!-- =====================================================
+     CHARACTERS + QUIZ
+===================================================== -->
 
 <section>
 
-  <div class="section-title">
-    <span>tiny test of your relationship knowledge</span>
-    <h2>How well do you know these two idiots? 😭</h2>
-  </div>
-
-  <div class="characters">
-
-    <div class="character ananta" id="ananta">
-
-      <div class="head">
-        <div class="hair"></div>
-        <div class="fringe"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="blush l"></div>
-        <div class="blush r"></div>
-        <div class="mouth"></div>
-      </div>
-
-      <div class="body"></div>
-      <div class="name">Ananta 🌷</div>
-
-    </div>
-
-    <div class="character varun" id="varun">
-
-      <div class="head">
-        <div class="hair"></div>
-        <div class="fringe"></div>
-        <div class="eye left"></div>
-        <div class="eye right"></div>
-        <div class="blush l"></div>
-        <div class="blush r"></div>
-        <div class="mouth"></div>
-      </div>
-
-      <div class="body"></div>
-      <div class="name">Varun 🌊</div>
-
-    </div>
-
+  <div class="sectionHead">
+    <small>important research</small>
+    <h2>How well do you know these two? 😭</h2>
   </div>
 
 
-  <div class="quiz-wrap">
+  <div class="characterStage">
+
+    <!-- ANANTA -->
+    <div class="char" id="anantaChar">
+
+      <div class="reaction" id="anantaReaction">hehe ♡</div>
+
+      <div class="face">
+
+        <div class="hairTop"></div>
+        <div class="hairLock"></div>
+
+        <div class="animeEye left"></div>
+        <div class="animeEye right"></div>
+
+        <div class="cheek left"></div>
+        <div class="cheek right"></div>
+
+        <div class="animeMouth"></div>
+
+      </div>
+
+      <div class="bodyCute anantaBody">
+
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+      </div>
+
+      <div class="charName">Ananta 🌷</div>
+
+    </div>
+
+
+    <!-- VARUN -->
+    <div class="char" id="varunChar">
+
+      <div class="reaction" id="varunReaction">bro what 😭</div>
+
+      <div class="face">
+
+        <div class="hairTop"></div>
+        <div class="hairLock"></div>
+
+        <div class="animeEye left"></div>
+        <div class="animeEye right"></div>
+
+        <div class="cheek left"></div>
+        <div class="cheek right"></div>
+
+        <div class="animeMouth"></div>
+
+      </div>
+
+      <div class="bodyCute varunBody">
+
+        <div class="arm left"></div>
+        <div class="arm right"></div>
+
+      </div>
+
+      <div class="charName">Varun 🌊</div>
+
+    </div>
+
+  </div>
+
+
+  <div class="quizBox">
 
     <div class="progress">
-      <div class="progress-bar" id="progressBar"></div>
+      <div class="progressBar" id="progress"></div>
     </div>
 
     <div id="quiz">
 
-      <div class="question-number" id="questionNumber">
+      <div class="qNo" id="qNo">
         QUESTION 1 / 10
       </div>
 
@@ -1281,16 +1565,17 @@ you're my everything.
 
     </div>
 
-    <div class="quiz-result" id="result">
 
-      <div style="font-size:55px;">🌷♡🌊</div>
+    <div class="quizResult" id="quizResult">
+
+      <div style="font-size:60px">🌷♡🌊</div>
 
       <h2 id="resultTitle"></h2>
 
       <p id="resultText"></p>
 
-      <button class="open-btn" onclick="restartQuiz()">
-        Again, because obviously 😭
+      <button class="mainButton" onclick="restartQuiz()">
+        Again 😭
       </button>
 
     </div>
@@ -1300,29 +1585,38 @@ you're my everything.
 </section>
 
 
-<!-- FINAL -->
+<!-- =====================================================
+     FINAL
+===================================================== -->
 
-<section class="final">
+<section>
 
-  <div class="final-card">
+  <div class="finalCard">
 
-    <div style="font-size:50px;">🌅🌷</div>
+    <div style="font-size:55px">🌅🌷♡</div>
 
-    <h2>One last thing...</h2>
+    <h2>Now go enjoy your morning.</h2>
 
     <p>
-      No matter how many miles are between us,
-      I hope you always remember that there is someone
-      cheering for you, annoying you, missing you,
-      and loving you from somewhere far away.
+      The flowers are awake.
+      The ocean is sparkling.
+      The sun is showing off.
+      And your annoying person has successfully reminded you
+      to eat breakfast.
     </p>
 
     <p>
-      Now go enjoy your Saturday, sleepyhead.
-      And yes — <b>breakfast first.</b> 😭
+      So please smile a little,
+      take care of yourself,
+      and have a beautiful Saturday.
     </p>
 
-    <div style="font-family:Caveat;font-size:30px;color:#b76579;">
+    <div style="
+      font-family:Caveat;
+      color:#b9687d;
+      font-size:32px;
+      margin-top:25px;
+    ">
       Good morning, my favourite girl ♡
     </div>
 
@@ -1335,11 +1629,11 @@ you're my everything.
 
 <script>
 
-/* =========================
-   QUIZ DATA
-========================= */
+/* =====================================================
+   QUIZ
+===================================================== */
 
-const questions = [
+const questions=[
 
 {
 q:"If Ananta says “I'm going to sleep early tonight”… what happens next?",
@@ -1364,12 +1658,12 @@ correct:3
 },
 
 {
-q:"If Ananta is suddenly very quiet, Varun's brain immediately goes…",
+q:"Ananta suddenly says “nothing” after going quiet. Varun's brain:",
 a:[
-"She's probably busy",
-"Everything is fine",
+"Stays peaceful",
+"Doesn't notice",
 "Detective mode ACTIVATED",
-"Let's peacefully wait"
+"Starts making breakfast"
 ],
 correct:2
 },
@@ -1377,16 +1671,16 @@ correct:2
 {
 q:"What's the most dangerous sentence in this relationship?",
 a:[
-“I'm not hungry”",
-“I'm fine”",
-“Nothing happened”",
-“All of these”
+"I'm not hungry",
+"I'm fine",
+"Nothing happened",
+"All of these 😭"
 ],
 correct:3
 },
 
 {
-q:"If these two got one whole day together with no distance, what would happen first?",
+q:"If these two got one whole day together with no distance, what happens first?",
 a:[
 "Take pictures",
 "Talk for hours",
@@ -1401,14 +1695,14 @@ q:"Who is more likely to start random nonsense for absolutely no reason?",
 a:[
 "Ananta",
 "Varun",
-"Both are innocent",
-"Neither. Impossible."
+"Both",
+"Nobody. They're very mature."
 ],
 correct:2
 },
 
 {
-q:"What makes the distance feel a little smaller?",
+q:"What makes their long-distance days feel a little less distant?",
 a:[
 "Random calls",
 "Long conversations",
@@ -1421,21 +1715,21 @@ correct:3
 {
 q:"If Ananta has a bad day, Varun's first mission is:",
 a:[
-"Give her space",
 "Make her laugh",
 "Listen to her",
+"Be there for her",
 "Whatever she needs"
 ],
 correct:3
 },
 
 {
-q:"Their relationship can best be described as:",
+q:"Their relationship is best described as:",
 a:[
-"Peaceful and normal",
-"Two calm adults",
+"Peaceful",
+"Normal",
 "Two idiots with feelings",
-"Absolutely unstoppable chaos"
+"An unnecessarily cute disaster"
 ],
 correct:2
 },
@@ -1456,22 +1750,24 @@ correct:3
 let current=0;
 let score=0;
 
-const qEl=document.getElementById("question");
+const questionEl=document.getElementById("question");
 const answersEl=document.getElementById("answers");
-const numberEl=document.getElementById("questionNumber");
-const progress=document.getElementById("progressBar");
-const quiz=document.getElementById("quiz");
-const result=document.getElementById("result");
-const ananta=document.getElementById("ananta");
-const varun=document.getElementById("varun");
+const qNo=document.getElementById("qNo");
+const progress=document.getElementById("progress");
+
+const ananta=document.getElementById("anantaChar");
+const varun=document.getElementById("varunChar");
+
+const anantaReaction=document.getElementById("anantaReaction");
+const varunReaction=document.getElementById("varunReaction");
 
 function loadQuestion(){
 
-  const item=questions[current];
+  const q=questions[current];
 
-  qEl.textContent=item.q;
+  questionEl.textContent=q.q;
 
-  numberEl.textContent=
+  qNo.textContent=
     `QUESTION ${current+1} / ${questions.length}`;
 
   progress.style.width=
@@ -1479,42 +1775,41 @@ function loadQuestion(){
 
   answersEl.innerHTML="";
 
-  item.a.forEach((answer,index)=>{
+  q.a.forEach((answer,index)=>{
 
-    const btn=document.createElement("button");
+    const button=document.createElement("button");
 
-    btn.className="answer";
-    btn.textContent=answer;
+    button.className="answer";
+    button.textContent=answer;
 
-    btn.onclick=()=>selectAnswer(index,btn);
+    button.onclick=()=>{
+      chooseAnswer(index,button);
+    };
 
-    answersEl.appendChild(btn);
+    answersEl.appendChild(button);
 
   });
 
 }
 
-function selectAnswer(index,button){
+function chooseAnswer(index,button){
 
-  const item=questions[current];
+  const q=questions[current];
 
   document.querySelectorAll(".answer")
     .forEach(b=>b.disabled=true);
 
-  if(index===item.correct){
+  if(index===q.correct){
 
     score++;
 
     button.classList.add("correct");
 
-    ananta.classList.remove("shocked");
-    varun.classList.remove("shocked");
+    ananta.classList.add("react");
+    varun.classList.add("react");
 
-    void ananta.offsetWidth;
-    void varun.offsetWidth;
-
-    ananta.classList.add("happy");
-    varun.classList.add("happy");
+    anantaReaction.textContent="hehe, correct ♡";
+    varunReaction.textContent="LET'S GOOO 😭";
 
     createHeart();
 
@@ -1522,18 +1817,18 @@ function selectAnswer(index,button){
 
     button.classList.add("wrong");
 
-    ananta.classList.add("shocked");
+    ananta.classList.add("react");
+    varun.classList.add("react");
 
-    if(Math.random()>.5){
-      varun.classList.add("shocked");
-    }
+    anantaReaction.textContent="ummm... excuse me? 😭";
+    varunReaction.textContent="bro WHAT";
 
   }
 
   setTimeout(()=>{
 
-    ananta.classList.remove("happy","shocked");
-    varun.classList.remove("happy","shocked");
+    ananta.classList.remove("react");
+    varun.classList.remove("react");
 
     current++;
 
@@ -1543,45 +1838,45 @@ function selectAnswer(index,button){
       showResult();
     }
 
-  },850);
+  },900);
 
 }
 
 function showResult(){
 
-  quiz.style.display="none";
-  result.style.display="block";
+  document.getElementById("quiz").style.display="none";
+  document.getElementById("quizResult").style.display="block";
 
-  let title="";
-  let text="";
+  let title;
+  let text;
 
   if(score>=9){
 
     title="Okayyy, you actually know them 😭💗";
 
     text=
-      `You got ${score}/10. At this point Ananta and Varun might need to be worried about how well you know their nonsense.`;
+      `You got ${score}/10. At this point you're basically part of the relationship committee.`;
 
   }else if(score>=7){
 
     title="Not bad, detective 🌷";
 
     text=
-      `You got ${score}/10. Pretty impressive. You clearly know these two little troublemakers.`;
+      `You got ${score}/10. You clearly know these two little troublemakers.`;
 
   }else if(score>=5){
 
-    title="Hmm… suspicious 👀";
+    title="Suspiciously average 😭";
 
     text=
-      `You got ${score}/10. You know them, but apparently some revision is required.`;
+      `You got ${score}/10. Some serious Anu × Varun research is required.`;
 
   }else{
 
     title="WHO ARE YOU 😭";
 
     text=
-      `You got ${score}/10. Ananta and Varun are filing a formal complaint.`;
+      `You got ${score}/10. The characters have officially requested a retest.`;
 
   }
 
@@ -1595,8 +1890,8 @@ function restartQuiz(){
   current=0;
   score=0;
 
-  result.style.display="none";
-  quiz.style.display="block";
+  document.getElementById("quizResult").style.display="none";
+  document.getElementById("quiz").style.display="block";
 
   loadQuestion();
 
@@ -1605,84 +1900,89 @@ function restartQuiz(){
 loadQuestion();
 
 
-/* =========================
-   FLOATING PETALS
-========================= */
+/* =====================================================
+   PETALS
+===================================================== */
 
-function createPetal(){
+function makePetal(){
 
-  const petal=document.createElement("div");
+  const p=document.createElement("div");
 
-  petal.className="petal";
+  p.className="petal";
 
-  petal.style.left=Math.random()*100+"vw";
+  p.style.left=Math.random()*100+"vw";
 
-  petal.style.animationDuration=
-    (5+Math.random()*6)+"s";
+  p.style.animationDuration=
+    (6+Math.random()*6)+"s";
 
-  petal.style.transform=
+  p.style.transform=
     `rotate(${Math.random()*360}deg)`;
 
-  document.body.appendChild(petal);
+  document.body.appendChild(p);
 
   setTimeout(()=>{
-    petal.remove();
-  },12000);
+    p.remove();
+  },13000);
 
 }
 
-setInterval(createPetal,900);
+setInterval(makePetal,850);
 
 
-/* =========================
-   HEART EFFECT
-========================= */
+/* =====================================================
+   HEART
+===================================================== */
 
 function createHeart(){
 
-  const heart=document.createElement("div");
+  const h=document.createElement("div");
 
-  heart.textContent="♡";
+  h.textContent="♡";
 
-  heart.style.position="fixed";
-  heart.style.left=(35+Math.random()*30)+"%";
-  heart.style.top="45%";
-  heart.style.fontSize="30px";
-  heart.style.color="white";
-  heart.style.pointerEvents="none";
-  heart.style.zIndex="20";
-  heart.style.transition="1s ease";
+  h.style.position="fixed";
+  h.style.left=(40+Math.random()*20)+"%";
+  h.style.top="45%";
+  h.style.fontSize="30px";
+  h.style.color="#fff";
+  h.style.zIndex="100";
+  h.style.pointerEvents="none";
+  h.style.transition="1s ease";
 
-  document.body.appendChild(heart);
+  document.body.appendChild(h);
 
   requestAnimationFrame(()=>{
 
-    heart.style.transform=
-      `translate(${(Math.random()-.5)*120}px,-120px) scale(1.5)`;
+    h.style.transform=
+      `translate(${(Math.random()-.5)*140}px,-130px) scale(1.5)`;
 
-    heart.style.opacity="0";
+    h.style.opacity="0";
 
   });
 
-  setTimeout(()=>heart.remove(),1000);
+  setTimeout(()=>h.remove(),1000);
 
 }
 
 
-/* =========================
-   SMALL PARALLAX EFFECT
-========================= */
+/* =====================================================
+   MOUSE PARALLAX
+===================================================== */
 
-document.addEventListener("mousemove",(e)=>{
+document.addEventListener("mousemove",e=>{
 
-  const x=(e.clientX/window.innerWidth-.5);
-  const y=(e.clientY/window.innerHeight-.5);
+  const x=e.clientX/window.innerWidth-.5;
+  const y=e.clientY/window.innerHeight-.5;
 
-  document.querySelector(".sun").style.transform=
-    `translate(${x*15}px,${y*10}px)`;
+  const sun=document.querySelector(".bigSun");
+  const palm=document.querySelector(".palm");
+  const flowers=document.querySelector(".flowerGarden");
 
-  document.querySelector(".flower-scene").style.transform=
-    `translate(${x*-8}px,${y*-5}px)`;
+  sun.style.marginLeft=(x*12)+"px";
+  sun.style.marginTop=(y*8)+"px";
+
+  palm.style.marginLeft=(x*7)+"px";
+
+  flowers.style.marginRight=(-x*8)+"px";
 
 });
 
@@ -1690,4 +1990,3 @@ document.addEventListener("mousemove",(e)=>{
 
 </body>
 </html>
-```

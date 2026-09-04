@@ -1,0 +1,1492 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Morning, Anu 🌷</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:'DM Sans',sans-serif;
+    color:#513c43;
+    background:#ffe9e4;
+    overflow-x:hidden;
+}
+
+/* ================= BACKGROUND ================= */
+
+.page{
+    min-height:100vh;
+    position:relative;
+    overflow:hidden;
+    background:
+        linear-gradient(
+            to bottom,
+            #ffd5c9 0%,
+            #ffe0c9 28%,
+            #f8c8b9 50%,
+            #eab8bd 72%,
+            #dcaebc 100%
+        );
+}
+
+.sun{
+    position:absolute;
+    width:170px;
+    height:170px;
+    border-radius:50%;
+    background:#fff0b7;
+    box-shadow:0 0 80px #fff0b7;
+    top:8%;
+    right:12%;
+    opacity:.9;
+}
+
+.ocean{
+    position:absolute;
+    bottom:0;
+    left:0;
+    width:100%;
+    height:42%;
+    background:
+        repeating-linear-gradient(
+            0deg,
+            rgba(255,255,255,.16) 0px,
+            rgba(255,255,255,.16) 2px,
+            transparent 2px,
+            transparent 22px
+        ),
+        linear-gradient(#b8d9d5,#a8cfd1);
+    opacity:.9;
+}
+
+.ocean::after{
+    content:"";
+    position:absolute;
+    width:70%;
+    height:100px;
+    left:15%;
+    top:25%;
+    background:rgba(255,244,202,.3);
+    filter:blur(25px);
+    border-radius:50%;
+}
+
+/* palm */
+
+.palm{
+    position:absolute;
+    left:5%;
+    bottom:31%;
+    width:130px;
+    height:300px;
+    z-index:2;
+}
+
+.trunk{
+    position:absolute;
+    bottom:0;
+    left:48px;
+    width:22px;
+    height:230px;
+    background:#765b55;
+    border-radius:50%;
+    transform:rotate(5deg);
+}
+
+.leaf{
+    position:absolute;
+    width:100px;
+    height:28px;
+    background:#789d84;
+    border-radius:100% 0 100% 0;
+    transform-origin:right center;
+}
+
+.leaf:nth-child(1){top:15px;left:15px;transform:rotate(-25deg);}
+.leaf:nth-child(2){top:35px;left:0;transform:rotate(-5deg);}
+.leaf:nth-child(3){top:55px;left:8px;transform:rotate(25deg);}
+.leaf:nth-child(4){top:10px;left:45px;transform:rotate(-55deg);}
+.leaf:nth-child(5){top:45px;left:50px;transform:rotate(55deg);}
+
+/* doodles */
+
+.doodles{
+    position:absolute;
+    inset:0;
+    pointer-events:none;
+    z-index:4;
+}
+
+.sparkle,
+.doodle-heart{
+    position:absolute;
+    color:white;
+    opacity:.75;
+    text-shadow:0 0 10px white;
+    animation:floatDoodle 4s ease-in-out infinite;
+}
+
+.sparkle{
+    font-size:22px;
+}
+
+.doodle-heart{
+    font-size:20px;
+}
+
+.s1{left:8%;top:15%}
+.s2{right:9%;top:25%;animation-delay:1s}
+.s3{left:18%;top:45%;animation-delay:2s}
+.s4{right:18%;top:55%;animation-delay:.5s}
+.s5{left:45%;top:12%;animation-delay:1.5s}
+.h1{left:12%;top:33%;animation-delay:1s}
+.h2{right:12%;top:43%;animation-delay:2s}
+.h3{left:70%;top:17%;animation-delay:.7s}
+
+@keyframes floatDoodle{
+    0%,100%{transform:translateY(0) rotate(0deg);opacity:.55}
+    50%{transform:translateY(-15px) rotate(10deg);opacity:1}
+}
+
+/* ================= CONTENT ================= */
+
+.content{
+    position:relative;
+    z-index:10;
+    max-width:900px;
+    margin:auto;
+    padding:45px 20px 100px;
+}
+
+.glass{
+    background:rgba(255,247,242,.62);
+    backdrop-filter:blur(14px);
+    border:1px solid rgba(255,255,255,.7);
+    box-shadow:0 20px 60px rgba(117,73,78,.14);
+    border-radius:35px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    min-height:92vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.morning{
+    font-size:14px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:#916b72;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-family:'Playfair Display',serif;
+    font-size:clamp(48px,10vw,88px);
+    color:#694a54;
+    line-height:1;
+}
+
+.hero h1 span{
+    color:#b66e7e;
+}
+
+.hero p{
+    max-width:550px;
+    margin:25px auto;
+    font-size:17px;
+    line-height:1.8;
+}
+
+.open-btn{
+    border:none;
+    padding:16px 30px;
+    border-radius:50px;
+    background:#fff;
+    color:#815966;
+    font-weight:700;
+    font-size:15px;
+    cursor:pointer;
+    box-shadow:0 12px 30px rgba(100,60,70,.15);
+    transition:.3s;
+}
+
+.open-btn:hover{
+    transform:translateY(-5px) scale(1.03);
+}
+
+/* ================= CHARACTERS ================= */
+
+.character-stage{
+    margin-top:30px;
+    min-height:330px;
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:flex-end;
+    gap:110px;
+}
+
+.character{
+    position:relative;
+    width:145px;
+    height:245px;
+    animation:breathe 3s ease-in-out infinite;
+}
+
+@keyframes breathe{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-5px)}
+}
+
+/* head */
+
+.head{
+    position:absolute;
+    width:105px;
+    height:108px;
+    top:12px;
+    left:20px;
+    background:#f7c9ad;
+    border-radius:48% 48% 46% 46%;
+    z-index:3;
+}
+
+.hair{
+    position:absolute;
+    width:112px;
+    height:82px;
+    top:4px;
+    left:16px;
+    border-radius:55px 55px 20px 20px;
+    z-index:5;
+}
+
+.ananta .hair{
+    background:#5d4646;
+}
+
+.varun .hair{
+    background:#3f3437;
+}
+
+.eye{
+    position:absolute;
+    width:9px;
+    height:12px;
+    background:#503b3b;
+    border-radius:50%;
+    top:55px;
+}
+
+.eye.left{left:29px}
+.eye.right{right:29px}
+
+.mouth{
+    position:absolute;
+    width:24px;
+    height:12px;
+    border-bottom:3px solid #9b5966;
+    border-radius:50%;
+    left:40px;
+    top:77px;
+}
+
+.cheek{
+    position:absolute;
+    width:15px;
+    height:7px;
+    background:#ee9d9d;
+    opacity:.45;
+    border-radius:50%;
+    top:70px;
+}
+
+.cheek.left{left:17px}
+.cheek.right{right:17px}
+
+/* body */
+
+.body{
+    position:absolute;
+    width:100px;
+    height:115px;
+    left:23px;
+    top:115px;
+    border-radius:45px 45px 20px 20px;
+}
+
+.ananta .body{
+    background:#f5aebd;
+}
+
+.varun .body{
+    background:#9dbcc4;
+}
+
+/* arms */
+
+.arm{
+    position:absolute;
+    width:25px;
+    height:75px;
+    border-radius:20px;
+    top:130px;
+    background:#f7c9ad;
+    z-index:1;
+}
+
+.arm.left{
+    left:8px;
+    transform:rotate(25deg);
+}
+
+.arm.right{
+    right:8px;
+    transform:rotate(-25deg);
+}
+
+/* legs */
+
+.leg{
+    position:absolute;
+    width:27px;
+    height:65px;
+    top:205px;
+    background:#6f5960;
+    border-radius:20px;
+}
+
+.leg.left{left:42px}
+.leg.right{right:42px}
+
+.ananta .leg{
+    background:#f4b2bc;
+}
+
+.varun .leg{
+    background:#667f8b;
+}
+
+/* labels */
+
+.character-name{
+    position:absolute;
+    bottom:-45px;
+    left:50%;
+    transform:translateX(-50%);
+    font-weight:700;
+    color:#76535e;
+    white-space:nowrap;
+}
+
+/* character reactions */
+
+.character.happy{
+    animation:happy .7s ease;
+}
+
+.character.shocked{
+    animation:shock .6s ease;
+}
+
+.character.bounce{
+    animation:bounce .8s ease;
+}
+
+@keyframes happy{
+    0%{transform:scale(1)}
+    40%{transform:scale(1.08) rotate(-3deg)}
+    70%{transform:scale(1.08) rotate(3deg)}
+    100%{transform:scale(1)}
+}
+
+@keyframes shock{
+    0%{transform:translateY(0)}
+    30%{transform:translateY(-18px) rotate(-5deg)}
+    60%{transform:translateY(0) rotate(5deg)}
+    100%{transform:translateY(0)}
+}
+
+@keyframes bounce{
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-30px)}
+    100%{transform:translateY(0)}
+}
+
+/* ================= CARDS ================= */
+
+.section{
+    margin-top:70px;
+    padding:40px 25px;
+}
+
+.section-title{
+    text-align:center;
+    font-family:'Playfair Display',serif;
+    font-size:38px;
+    color:#694a54;
+    margin-bottom:15px;
+}
+
+.section-subtitle{
+    text-align:center;
+    line-height:1.7;
+    margin-bottom:30px;
+}
+
+/* ================= LETTER ================= */
+
+.letter{
+    padding:40px;
+}
+
+.letter p{
+    line-height:1.9;
+    margin-bottom:22px;
+    font-size:16px;
+}
+
+.letter .opening{
+    font-family:'Playfair Display',serif;
+    font-size:25px;
+    color:#a26372;
+}
+
+.poem{
+    margin:35px 0;
+    padding:25px;
+    border-left:3px solid #d797a4;
+    background:rgba(255,255,255,.35);
+    border-radius:0 20px 20px 0;
+    line-height:2;
+    font-family:'Playfair Display',serif;
+    color:#76535e;
+}
+
+.poem-title{
+    font-weight:700;
+    font-size:23px;
+    margin-bottom:12px;
+}
+
+/* ================= SELF CARE ================= */
+
+.care-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.care{
+    padding:22px;
+    background:rgba(255,255,255,.48);
+    border-radius:22px;
+    text-align:center;
+    transition:.3s;
+}
+
+.care:hover{
+    transform:translateY(-5px);
+    background:rgba(255,255,255,.75);
+}
+
+.care .emoji{
+    font-size:30px;
+    margin-bottom:8px;
+}
+
+/* ================= QUIZ ================= */
+
+.quiz-box{
+    padding:35px;
+    text-align:center;
+}
+
+.question-number{
+    font-size:13px;
+    letter-spacing:2px;
+    color:#a06c77;
+    text-transform:uppercase;
+}
+
+.question{
+    font-family:'Playfair Display',serif;
+    font-size:28px;
+    color:#694a54;
+    margin:18px 0 25px;
+}
+
+.answers{
+    display:grid;
+    gap:12px;
+}
+
+.answer{
+    border:1px solid rgba(145,100,110,.2);
+    background:rgba(255,255,255,.65);
+    padding:15px 18px;
+    border-radius:18px;
+    cursor:pointer;
+    text-align:left;
+    font-family:inherit;
+    font-size:15px;
+    color:#614950;
+    transition:.25s;
+}
+
+.answer:hover{
+    transform:translateX(5px);
+    background:white;
+}
+
+.answer.correct{
+    background:#dff0dc;
+}
+
+.answer.wrong{
+    background:#f6d9d7;
+}
+
+.quiz-reaction{
+    min-height:45px;
+    margin-top:18px;
+    font-weight:600;
+    color:#9a6370;
+}
+
+.next-btn{
+    margin-top:15px;
+    border:none;
+    background:#9f6876;
+    color:white;
+    padding:13px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    display:none;
+}
+
+/* ================= FINAL ================= */
+
+.final{
+    text-align:center;
+    padding:55px 30px;
+}
+
+.final h2{
+    font-family:'Playfair Display',serif;
+    font-size:45px;
+    color:#694a54;
+}
+
+.final p{
+    line-height:1.9;
+    margin:20px auto;
+    max-width:600px;
+}
+
+.big-heart{
+    font-size:70px;
+    display:inline-block;
+    animation:heartBeat 1.4s infinite;
+}
+
+@keyframes heartBeat{
+    0%,100%{transform:scale(1)}
+    30%{transform:scale(1.18)}
+    50%{transform:scale(1)}
+}
+
+/* ================= FLOATING HEARTS ================= */
+
+.floating{
+    position:fixed;
+    pointer-events:none;
+    z-index:100;
+    animation:rise 3s linear forwards;
+}
+
+@keyframes rise{
+    0%{
+        transform:translateY(0) scale(.5);
+        opacity:0;
+    }
+    20%{opacity:1}
+    100%{
+        transform:translateY(-300px) scale(1.2) rotate(20deg);
+        opacity:0;
+    }
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:650px){
+
+    .content{
+        padding:25px 13px 70px;
+    }
+
+    .hero{
+        min-height:85vh;
+    }
+
+    .hero h1{
+        font-size:54px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+
+    .character-stage{
+        gap:35px;
+        transform:scale(.85);
+        margin-left:-20px;
+        margin-right:-20px;
+    }
+
+    .section{
+        margin-top:45px;
+        padding:28px 18px;
+        border-radius:27px;
+    }
+
+    .letter{
+        padding:25px 18px;
+    }
+
+    .letter p{
+        font-size:15px;
+    }
+
+    .care-grid{
+        grid-template-columns:1fr;
+    }
+
+    .question{
+        font-size:24px;
+    }
+
+    .quiz-box{
+        padding:25px 17px;
+    }
+
+    .sun{
+        width:120px;
+        height:120px;
+        right:4%;
+    }
+
+    .palm{
+        transform:scale(.7);
+        transform-origin:bottom left;
+        left:-15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="page">
+
+    <div class="sun"></div>
+    <div class="ocean"></div>
+
+    <div class="palm">
+        <div class="trunk"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+        <div class="leaf"></div>
+    </div>
+
+    <div class="doodles">
+        <span class="sparkle s1">✦</span>
+        <span class="sparkle s2">✧</span>
+        <span class="sparkle s3">✦</span>
+        <span class="sparkle s4">✧</span>
+        <span class="sparkle s5">✦</span>
+        <span class="doodle-heart h1">♡</span>
+        <span class="doodle-heart h2">♡</span>
+        <span class="doodle-heart h3">♡</span>
+    </div>
+
+    <main class="content">
+
+        <!-- HERO -->
+
+        <section class="hero">
+
+            <div class="morning">A tiny morning surprise for you</div>
+
+            <h1>
+                Good Morning,<br>
+                <span>Anu 🌷</span>
+            </h1>
+
+            <p>
+                Somewhere between the sunrise, the ocean breeze
+                and a certain annoying boy thinking about you...
+                this little morning surprise was made. ☀️
+            </p>
+
+            <button class="open-btn" onclick="startMorning()">
+                Open Your Morning Surprise ✨
+            </button>
+
+            <div class="character-stage">
+
+                <!-- ANANTA -->
+
+                <div class="character ananta" id="ananta">
+
+                    <div class="hair"></div>
+
+                    <div class="head">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="cheek left"></div>
+                        <div class="cheek right"></div>
+                        <div class="mouth"></div>
+                    </div>
+
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="body"></div>
+                    <div class="leg left"></div>
+                    <div class="leg right"></div>
+
+                    <div class="character-name">Ananta 🌷</div>
+
+                </div>
+
+
+                <!-- VARUN -->
+
+                <div class="character varun" id="varun">
+
+                    <div class="hair"></div>
+
+                    <div class="head">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                        <div class="cheek left"></div>
+                        <div class="cheek right"></div>
+                        <div class="mouth"></div>
+                    </div>
+
+                    <div class="arm left"></div>
+                    <div class="arm right"></div>
+                    <div class="body"></div>
+                    <div class="leg left"></div>
+                    <div class="leg right"></div>
+
+                    <div class="character-name">Varun 🤍</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- MORNING MESSAGE -->
+
+        <section class="section glass" id="message">
+
+            <h2 class="section-title">Before You Do Anything...</h2>
+
+            <p class="section-subtitle">
+                Yes, this is your officially unofficial morning reminder
+                from the boy who worries about you way too much. 😂
+            </p>
+
+            <div class="care-grid">
+
+                <div class="care">
+                    <div class="emoji">🍳</div>
+                    <b>Eat your breakfast.</b>
+                    <p>Please don't survive on air and vibes.</p>
+                </div>
+
+                <div class="care">
+                    <div class="emoji">💧</div>
+                    <b>Drink some water.</b>
+                    <p>Your body is not powered by Wi-Fi.</p>
+                </div>
+
+                <div class="care">
+                    <div class="emoji">🧠</div>
+                    <b>No unnecessary overthinking.</b>
+                    <p>Not every thought deserves a full investigation.</p>
+                </div>
+
+                <div class="care">
+                    <div class="emoji">🌷</div>
+                    <b>Take care of yourself.</b>
+                    <p>Today is for peaceful thoughts and pretty smiles.</p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOVE LETTER -->
+
+        <section class="section glass letter">
+
+            <h2 class="section-title">A Little Letter For You 💌</h2>
+
+            <p class="opening">My dearest girl,</p>
+
+            <p>
+                You are one of the most precious people in my life.
+                Somehow, even with all these miles between us, you have
+                become such a huge part of my everyday life. You are
+                there in my mornings, in my random thoughts, in the
+                little things that make me smile and in all the moments
+                when I wish I could simply tell you something instead
+                of typing it on a screen.
+            </p>
+
+            <p>
+                I love the way we can still feel close despite the
+                distance. A call, a message, a random conversation,
+                your voice, your smile on my screen — somehow all of
+                those little things make the distance feel a little
+                smaller.
+            </p>
+
+            <p>
+                I appreciate you more than I probably manage to say.
+                I love listening to you. I love looking at you.
+                I love learning about you. I love learning from you.
+                I love thinking about all the wonderful things I love
+                about you.
+            </p>
+
+            <p>
+                I love how strong you are. I love how much you love me.
+                I love that such love exists. I love loving you and
+                maybe making your day a little better. I love that I'm
+                yours. I love that you're mine.
+            </p>
+
+            <p>
+                I love you more than my mind can define.
+                Beyond that, I really don't care about much anymore...
+                just you.
+            </p>
+
+            <p>
+                And until the day distance finally stops being part of
+                our story, I will keep choosing you from wherever I am.
+                I will keep waiting for your calls, laughing at your
+                nonsense, listening to your stories and looking forward
+                to all the ordinary little moments we will eventually
+                get to share.
+            </p>
+
+            <p>
+                For now, though, I have one extremely important job:
+                reminding you to eat your breakfast. 😂
+            </p>
+
+
+            <!-- POEM 1 -->
+
+            <div class="poem">
+
+                <div class="poem-title">In Every Little Thing 🌙</div>
+
+                I look for you in quiet mornings,<br>
+                in little songs and golden skies.<br>
+                I find your name in random thoughts,<br>
+                and somehow smile without knowing why.<br><br>
+
+                I hear you in familiar laughter,<br>
+                I feel you in the calm of night.<br>
+                And even when you're miles away,<br>
+                you still somehow make everything feel right.
+
+            </div>
+
+
+            <!-- POEM 2 -->
+
+            <div class="poem">
+
+                <div class="poem-title">I Love You, Everywhere 🌷</div>
+
+                I love you,<br>
+                in every universe,<br>
+                I search for you,<br>
+                in the pieces of dust.<br><br>
+
+                I smell you,<br>
+                in the fragrance of flowers,<br>
+                I wait for you,<br>
+                in twilight hours.<br><br>
+
+                I recall you,<br>
+                in my prayers,<br>
+                I miss you,<br>
+                with eyes full of tears.<br><br>
+
+                I hear you,<br>
+                in the whispers of the breeze,<br>
+                I feel you,<br>
+                in the rustling of the trees.<br><br>
+
+                I see you,<br>
+                in the stars above,<br>
+                I find you,<br>
+                in every act of love.<br><br>
+
+                I dream of you,<br>
+                in the quiet of the night,<br>
+                to hold you,<br>
+                in my heart so tight.
+
+            </div>
+
+
+            <!-- MY EVERYTHING -->
+
+            <div class="poem">
+
+                <div class="poem-title">My Everything 🤍</div>
+
+                You’re my love, my life,<br>
+                the air that I breathe.<br>
+                You’re my soul, my happiness,<br>
+                the all that I need.<br><br>
+
+                You’re my light, my dark,<br>
+                the stars in the sky.<br>
+                You’re my ups, my downs,<br>
+                the reason I try.<br><br>
+
+                You’re my strength, my weakness,<br>
+                the love from the start.<br>
+                You’re my heartache, my pain,<br>
+                the beat of my heart.<br><br>
+
+                You’re my tears, your joy,<br>
+                in the love that you bring.<br>
+                You’re my world, my galaxy,<br>
+                you’re my everything.
+
+            </div>
+
+
+            <!-- ORIGINAL EXTRA POEM -->
+
+            <div class="poem">
+
+                <div class="poem-title">Until The Distance Fades ☁️</div>
+
+                Until the miles become memories,<br>
+                until the screens become a thing of the past,<br>
+                I'll keep finding little pieces of you<br>
+                in every ordinary day that passes.<br><br>
+
+                And when the waiting finally ends,<br>
+                I hope we laugh about all this time apart<br>
+                and realise that somehow,<br>
+                distance only taught us<br>
+                how much one person can mean to another heart.
+
+            </div>
+
+        </section>
+
+
+        <!-- QUIZ -->
+
+        <section class="section glass" id="quiz">
+
+            <h2 class="section-title">The Very Serious Ananta × Varun Quiz 😂</h2>
+
+            <p class="section-subtitle">
+                Warning: this test contains absolutely unnecessary questions.
+                Please take it extremely seriously.
+            </p>
+
+            <div class="quiz-box">
+
+                <div class="question-number" id="questionNumber">
+                    Question 1 of 10
+                </div>
+
+                <div class="question" id="question">
+                    Loading...
+                </div>
+
+                <div class="answers" id="answers"></div>
+
+                <div class="quiz-reaction" id="reaction"></div>
+
+                <button class="next-btn" id="nextBtn" onclick="nextQuestion()">
+                    Next Question →
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <!-- FINAL -->
+
+        <section class="section glass final" id="final">
+
+            <div class="big-heart">💗</div>
+
+            <h2>Okay, Miss Ananta...</h2>
+
+            <p>
+                Your official morning assignment is now complete.
+            </p>
+
+            <p>
+                Eat something nice. Drink some water.
+                Don't let your brain create 47 unnecessary scenarios.
+                Enjoy your free day, smile a little more,
+                and remember that somewhere out there,
+                your favourite idiot is thinking about you. 🌷
+            </p>
+
+            <p>
+                Have the prettiest morning, Anu.
+                You deserve a beautiful day. ☀️
+            </p>
+
+            <p>
+                <b>Now go eat your breakfast. 😭😂</b>
+            </p>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+/* ================= START ================= */
+
+function startMorning(){
+
+    document.getElementById("message")
+        .scrollIntoView({behavior:"smooth"});
+
+    celebrate();
+
+    const anu = document.getElementById("ananta");
+    const varun = document.getElementById("varun");
+
+    anu.classList.add("happy");
+    varun.classList.add("bounce");
+
+    setTimeout(()=>{
+        anu.classList.remove("happy");
+        varun.classList.remove("bounce");
+    },1000);
+}
+
+
+/* ================= FLOATING HEARTS ================= */
+
+function celebrate(){
+
+    for(let i=0;i<14;i++){
+
+        setTimeout(()=>{
+
+            const heart=document.createElement("div");
+
+            heart.className="floating";
+            heart.innerHTML=["♡","♥","✦","✧"][Math.floor(Math.random()*4)];
+
+            heart.style.left=(20+Math.random()*60)+"%";
+            heart.style.bottom="25%";
+            heart.style.fontSize=(15+Math.random()*20)+"px";
+
+            document.body.appendChild(heart);
+
+            setTimeout(()=>{
+                heart.remove();
+            },3000);
+
+        },i*100);
+    }
+}
+
+
+/* ================= QUIZ ================= */
+
+const questions=[
+
+{
+q:"What is Ananta most likely to do after waking up?",
+a:[
+"Say good morning 🌷",
+"Check her phone 📱",
+"Say 'five more minutes' 😴",
+"Go straight back to sleep 💀"
+],
+correct:2,
+reactions:[
+"Very sweet answer. 🌷",
+"Obviously. Phone first. 😂",
+"HAHA. We knew this one.",
+"Ananta has chosen violence against mornings. 💀"
+]
+},
+
+{
+q:"Who overthinks more?",
+a:[
+"Varun",
+"Ananta",
+"Both of us 😭",
+"Whoever is having a bad day 😂"
+],
+correct:2,
+reactions:[
+"Varun catching a stray. 😭",
+"Ananta has been exposed.",
+"Correct. Two professional overthinkers.",
+"Honestly... fair."
+]
+},
+
+{
+q:"When Ananta says 'I'm fine', what does it usually mean?",
+a:[
+"She is actually fine",
+"Everything is completely normal",
+"Something is suspicious 🚨",
+"Varun needs detective mode 🕵️"
+],
+correct:3,
+reactions:[
+"Nice try. 😂",
+"Are we sure about that?",
+"🚨 Suspicious activity detected.",
+"Detective Varun has entered the chat. 🕵️"
+]
+},
+
+{
+q:"Who usually says sorry first?",
+a:[
+"Varun 🥲",
+"Ananta 🥺",
+"Whoever started the drama 😂",
+"Nobody. Silent mode activated."
+],
+correct:0,
+reactions:[
+"Varun deserves a medal. 🫡",
+"Interesting choice... 👀",
+"Honestly, probably true. 😂",
+"That would be an extremely long 20 minutes. 😭"
+]
+},
+
+{
+q:"What is Varun's unofficial job description?",
+a:[
+"Boyfriend ❤️",
+"Professional annoyance",
+"Breakfast reminder 🍳",
+"All of the above 😂"
+],
+correct:3,
+reactions:[
+"Only one part of the job.",
+"Unfortunately, yes. 😂",
+"VERY important responsibility.",
+"Correct. He has too many jobs."
+]
+},
+
+{
+q:"What is Ananta most likely to do on a completely free day?",
+a:[
+"Sleep 😴",
+"Overthink 🧠",
+"Annoy Varun 😌",
+"Somehow do all three 💀"
+],
+correct:3,
+reactions:[
+"Classic Ananta.",
+"Brain: please rest. 😭",
+"Varun accepts his fate.",
+"THE CORRECT ANSWER. 💀"
+]
+},
+
+{
+q:"Who is more mischievous?",
+a:[
+"Ananta 😇",
+"Varun 😌",
+"Both of us are innocent...",
+"The evidence says otherwise 😂"
+],
+correct:3,
+reactions:[
+"That halo is suspicious. 😇",
+"Varun is pretending to be innocent.",
+"Nobody believes this.",
+"Exactly. Case closed. 😂"
+]
+},
+
+{
+q:"What should our team name be?",
+a:[
+"The Trouble Makers",
+"Two Idiots, One Brain 😂",
+"Sleepy & Annoying",
+"Anu × Varun — The Unstoppable Duo ❤️"
+],
+correct:3,
+reactions:[
+"Honestly... accurate.",
+"One brain might be generous. 😭",
+"That is dangerously accurate.",
+"YES. Official team name unlocked. ❤️"
+]
+},
+
+{
+q:"What makes our long-distance relationship feel less distant?",
+a:[
+"Random calls 📱",
+"Late-night conversations 🌙",
+"Annoying each other from miles away 😂",
+"Simply having each other"
+],
+correct:3,
+reactions:[
+"Definitely one of them. ❤️",
+"Those conversations are special.",
+"How romantic. How annoying. 😂",
+"Exactly. That's the one. 🤍"
+]
+},
+
+{
+q:"And finally... what is Varun to Ananta?",
+a:[
+"An annoying boy 😭",
+"Her favourite person",
+"Her safe place",
+"Her favourite idiot ❤️"
+],
+correct:3,
+reactions:[
+"OUCH. 😂",
+"Okayyy, that's sweet.",
+"That one made Varun emotional. 🥹",
+"CORRECT ANSWER. NO DISCUSSION. ❤️"
+]
+}
+
+];
+
+let currentQuestion=0;
+let score=0;
+
+function loadQuestion(){
+
+    const data=questions[currentQuestion];
+
+    document.getElementById("questionNumber").innerText=
+        `Question ${currentQuestion+1} of ${questions.length}`;
+
+    document.getElementById("question").innerText=data.q;
+
+    const answers=document.getElementById("answers");
+
+    answers.innerHTML="";
+
+    document.getElementById("reaction").innerText="";
+
+    document.getElementById("nextBtn").style.display="none";
+
+    data.a.forEach((answer,index)=>{
+
+        const button=document.createElement("button");
+
+        button.className="answer";
+        button.innerText=answer;
+
+        button.onclick=()=>chooseAnswer(index,button);
+
+        answers.appendChild(button);
+
+    });
+}
+
+
+function chooseAnswer(index,button){
+
+    const data=questions[currentQuestion];
+
+    const allButtons=document.querySelectorAll(".answer");
+
+    allButtons.forEach(btn=>{
+        btn.disabled=true;
+    });
+
+    if(index===data.correct){
+
+        score++;
+
+        button.classList.add("correct");
+
+        document.getElementById("reaction").innerText=
+            "✓ "+data.reactions[index];
+
+        characterReaction("happy");
+
+        celebrate();
+
+    }else{
+
+        button.classList.add("wrong");
+
+        document.getElementById("reaction").innerText=
+            data.reactions[index];
+
+        characterReaction("shocked");
+
+    }
+
+    document.getElementById("nextBtn").style.display="inline-block";
+}
+
+
+function characterReaction(type){
+
+    const anu=document.getElementById("ananta");
+    const varun=document.getElementById("varun");
+
+    anu.classList.remove("happy","shocked","bounce");
+    varun.classList.remove("happy","shocked","bounce");
+
+    void anu.offsetWidth;
+    void varun.offsetWidth;
+
+    anu.classList.add(type);
+    varun.classList.add(type==="happy" ? "bounce":"shocked");
+
+    setTimeout(()=>{
+        anu.classList.remove(type);
+        varun.classList.remove(type==="happy" ? "bounce":"shocked");
+    },900);
+}
+
+
+function nextQuestion(){
+
+    currentQuestion++;
+
+    if(currentQuestion>=questions.length){
+
+        finishQuiz();
+
+        return;
+    }
+
+    loadQuestion();
+
+    document.getElementById("quiz")
+        .scrollIntoView({behavior:"smooth"});
+
+}
+
+
+function finishQuiz(){
+
+    document.getElementById("questionNumber").innerText=
+        "Quiz Complete ✨";
+
+    document.getElementById("question").innerText=
+        `You scored ${score}/10 ❤️`;
+
+    document.getElementById("answers").innerHTML="";
+
+    document.getElementById("reaction").innerHTML=
+        `<strong>Congratulations, Ananta.</strong><br>
+        You officially know your annoying Varun way too well. 😂<br><br>
+        Now your final mission: eat breakfast, drink some water,
+        stop unnecessary overthinking and have a beautiful day. 🌷`;
+
+    document.getElementById("nextBtn").style.display="none";
+
+    celebrate();
+
+    document.getElementById("final")
+        .scrollIntoView({behavior:"smooth"});
+}
+
+
+/* Load first question */
+
+loadQuestion();
+
+
+/* ================= AMBIENT DOODLES ================= */
+
+setInterval(()=>{
+
+    const sparkle=document.createElement("div");
+
+    sparkle.className="floating";
+    sparkle.innerHTML=Math.random()>.5?"✦":"♡";
+
+    sparkle.style.left=(10+Math.random()*80)+"%";
+    sparkle.style.bottom="5%";
+
+    document.body.appendChild(sparkle);
+
+    setTimeout(()=>{
+        sparkle.remove();
+    },3000);
+
+},1800);
+
+</script>
+
+</body>
+</html>
+```
